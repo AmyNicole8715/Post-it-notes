@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postys</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        html
+        {
+            font-family: 'Permanent Marker', cursive;
+            background-image: url('office.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow: hidden;
+            background-position: 100% 100%;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            
+        }
+        body
+        {
+            height: 100%;
+            width: 100%;
+            display: flex;
+        }
+        
+        .whiteboard
+        {
+            height: 1000px;
+            width: 2500px;
+            background-image: url('dryerase.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            
+            align-self: flex-end;
+            
+        }
+        .paper
+        {
+            height: 100px;
+            width: 100px;
+            background-color: rgb(253, 255, 151);
+            font-size: 2em;
+            
+        }
+        .note
+        {
+            min-height: 100px;
+            width: 100px;
+            background-color: rgb(253, 255, 151);
+            font-size: 1.25em;
+            position: relative;
+            box-shadow: 0 0 3px black;
+            line-height: 1em;
+            text-align: justify;
+            word-wrap: break-word;
+            word-break: break-all;
+            
+        }
+        #draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+        button
+        {
+            border-radius: 5px;
+            
+            background-color: #96c8fb;
+            background-image: linear-gradient(315deg, #96c8fb 0%, #ddbdfc 74%);
+        }
+        
+    </style>
+    <script>
+        function newNote()
+        {let textValue = $("#userInput").val();
+
+            $("#userInput").val("");
+            const newDiv = $("<div></div>")
+            newDiv.addClass("note");
+            if (textValue.length < 10) newDiv.css({fontSize: "2em", textAlign: "center"});
+            else if (textValue.length > 40) newDiv.css({fontSize: ".75em", textAlign: "center"});
+
+            newDiv.text(textValue);
+            $("#draggable").append(newDiv);
+            newDiv.draggable({snap: true});
+            return false;
+
+            
+        }
+
+
+        
+    </script>
+</head>
+<body>
+    <div>
+        <form onsubmit="return newNote()">
+        <input class="userInput" id="userInput" value=""></input>
+        <button type="submit" id="ButtonID">Posty Baby!</button></form>
+        <div id="paper" class="paper"></div>
+    </div>
+    <div id="snaptarget" class="whiteboard">
+        <div id="draggable" class="ui-widget-content"></div>
+
+
+    </div>
+    
+</body>
+</html>
