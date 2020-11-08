@@ -19,7 +19,6 @@
             height: 100%;
             width: 100%;
             background-size: cover;
-            
         }
         body
         {
@@ -36,7 +35,6 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center bottom;
-            
             align-self: flex-end;
             
         }
@@ -60,13 +58,11 @@
             text-align: justify;
             word-wrap: break-word;
             word-break: break-all;
-            
         }
         #draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
         button
         {
             border-radius: 5px;
-            
             background-color: #96c8fb;
             background-image: linear-gradient(315deg, #96c8fb 0%, #ddbdfc 74%);
         }
@@ -81,17 +77,11 @@
             newDiv.addClass("note");
             if (textValue.length < 10) newDiv.css({fontSize: "2em", textAlign: "center"});
             else if (textValue.length > 40) newDiv.css({fontSize: ".75em", textAlign: "center"});
-
             newDiv.text(textValue);
             $("#draggable").append(newDiv);
             newDiv.draggable({snap: true});
-            return false;
-
-            
-        }
-
-
-        
+            return false;            
+        }        
     </script>
 </head>
 <body>
@@ -103,8 +93,6 @@
     </div>
     <div id="snaptarget" class="whiteboard">
         <div id="draggable" class="ui-widget-content"></div>
-
-
     </div>
     
 </body>
