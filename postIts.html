@@ -50,7 +50,6 @@
         {
             min-height: 100px;
             width: 100px;
-            background-color: rgb(253, 255, 151);
             font-size: 1.25em;
             position: relative;
             box-shadow: 0 0 3px black;
@@ -66,6 +65,10 @@
             background-color: #96c8fb;
             background-image: linear-gradient(315deg, #96c8fb 0%, #ddbdfc 74%);
         }
+        #colorPicker 
+        {
+            border-radius: 5px;
+        }
         
     </style>
     <script>
@@ -77,11 +80,16 @@
             newDiv.addClass("note");
             if (textValue.length < 10) newDiv.css({fontSize: "2em", textAlign: "center"});
             else if (textValue.length > 40) newDiv.css({fontSize: ".75em", textAlign: "center"});
+            newDiv.css("background-color", $("#colorPicker").val())
             newDiv.text(textValue);
             $("#draggable").append(newDiv);
             newDiv.draggable({snap: true});
             return false;            
-        }        
+        }
+         updatePaper = () => {
+             $("#paper").css("background-color", $("#colorPicker").val())
+
+         }       
     </script>
 </head>
 <body>
@@ -89,6 +97,7 @@
         <form onsubmit="return newNote()">
         <input class="userInput" id="userInput" value=""></input>
         <button type="submit" id="ButtonID">Posty Baby!</button></form>
+        <input type="color" id="colorPicker" value="#fdff97" onblur="updatePaper()"></input>
         <div id="paper" class="paper"></div>
     </div>
     <div id="snaptarget" class="whiteboard">
